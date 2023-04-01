@@ -12,7 +12,7 @@ Este é um projeto de um gerenciador de tarefas simples feito com HTML, CSS e Ja
 - Adicionar tarefas ✅
 - Editar tarefas 📝
 - Excluir tarefas 🗑️
-- Alternar entre temas claro e escuro 🌞🌙
+- Alternar entre temas claro e escuro 🌞🌑
 
 ## Como usar 🤔
 
