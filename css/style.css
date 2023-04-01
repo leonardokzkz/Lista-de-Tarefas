@@ -1,0 +1,187 @@
+/*  */
+:root {
+    /* Cor dos botões */
+    --cor-primaria: #0D47A1;
+    --cor-secundaria: #1269eb;
+    --bg-color: #222;
+    --cor-white:#eee;
+}
+/* Definição de fonte e cor de fundo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--cor-white);
+    color: var(--bg-color);
+  }
+  
+  /* Definição do tema escuro */
+  body.dark {
+    background-color: var(--bg-color);
+    color: var(--cor-white);
+    min-height: 100vh;
+
+    
+  }
+  
+  /* Definição da altura mínima do conteúdo principal */
+  main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #bbb7b7;
+    box-shadow: 0px 0px 10px rgba(179, 176, 176, 0.3);
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+  
+  /* Definição de alinhamento para os títulos */
+  h1, h2 {
+    text-align: center;
+  }
+  
+  /* Definição do estilo do formulário */
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Definição do estilo dos inputs de texto */
+  form input[type="text"] {
+    flex: 1 0 130px;
+    padding: 10px;
+    border: 1px solid var(--cor-white);
+    border-radius: 4px;
+    width: 50%;
+    margin-right: 10px;
+  }
+  
+  /* Definição do estilo do botão de envio do formulário */
+  form button {
+    flex: 1 0 40px;
+    padding: 20px;
+    background-color: var(--cor-primaria);
+    color: var(--cor-white);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Definição do estilo da lista */
+  ul {
+    list-style-type: none;
+    padding: 10;
+    margin: 0;
+    border-radius: 1px;
+  }
+  
+  /* Definição do estilo dos itens da lista */
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding: 5px;
+    border-bottom: 1px solid var(--cor-white);
+    transition: background-color 0.2s; /* animação de transição de cor */
+  }
+  
+  /* Definição do estilo dos itens da lista ao passar o mouse */
+  li:hover {
+    background-color: #88a4cf; /*fundodiferenteaopassaromouse*/
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+  
+  /* Definição do estilo do botão de edição ao passar o mouse */
+  li .editar:hover,.excluir:hover {
+    background-color: var(--cor-secundaria);
+  }
+  
+/* Definição do estilo do botão de edição e exclusão */
+  li .excluir,.editar {
+    background-color: var(--cor-primaria);
+    color: var(--cor-white);
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    margin-left: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  /* Tema escuro tarefas */
+  .dark #tarefas-container {
+    background-color: var(--bg-color);
+    color: var(--cor-white);
+  }
+
+  .dark #lista-tarefas {
+    color: var(--cor-white);
+  }
+  .dark #tarefas-container button {
+    background-color: var(--cor-primaria);
+    color: var(--cor-white);
+  }
+  
+  /* Estilo para a div container */
+    #tarefas-container {
+    padding: 20px;
+    background-color: var(--cor-white);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+
+ 
+  
+  /* Estilo para a lista de tarefas */
+  #lista-tarefas {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Estilo para as tarefas individuais */
+  #lista-tarefas li button {
+    border: none;
+    padding: 5px;
+    margin: 0 5px;
+    font-size: 16px;
+    color: var(--cor-white);
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  /* Estilo para a primeira tarefa */
+  #lista-tarefas li:first-child {
+    border-top: 1px solid var(--cor-white);
+  }
+  
+  /* Estilo para a última tarefa */
+  #lista-tarefas li:last-child {
+    border-bottom: none;
+  }
+  
+  
+  /* Definição do estilo do botão de mudança de tema */
+  #theme-toggle {
+    padding: 10px;
+    background-color: var(--cor-primaria);
+    color: var(--cor-white);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
