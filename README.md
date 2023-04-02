@@ -24,6 +24,8 @@ Cada tarefa da lista possui dois botões: um para editar a tarefa e outro para e
 
 Também é possível alternar entre o tema claro e o tema escuro clicando no botão "Alterar tema".
 
+### Site no ar *(https://leonardokzkz.github.io/Lista-de-Tarefas/)*
+
 ## Desenvolvimento 🛠️
 
 Durante o processo de desenvolvimento, utilizei a metodologia ágil e boas práticas de desenvolvimento de software. O código foi estruturado de forma clara e organizada, visando facilitar a manutenção e evolução do projeto.
