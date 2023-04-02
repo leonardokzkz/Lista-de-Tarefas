@@ -1,3 +1,6 @@
+// TEMA DARK
+
+
 // seleciona o botão e adiciona um ouvinte de evento de clique
 document.getElementById("theme-toggle").addEventListener("click", function() {
     // seleciona o body
@@ -18,12 +21,13 @@ document.getElementById("theme-toggle").addEventListener("click", function() {
       body.classList.add("dark");
       tarefasContainer.classList.add("dark")
     }
-  });
-  
-  
-  
-  
-  // JavaScript
+  });  
+
+////////////////////////////////////////////////////////////////////////////////
+
+// LÓGCA DE GERENCIA DAS TAREFAS
+
+
 // Seleciona os elementos do HTML
 const form = document.querySelector('#form-tarefa');
 const input = document.querySelector('#input-tarefa');
@@ -46,6 +50,11 @@ function atualizarLista() {
       <div>
         <button class="editar" data-indice="${indice}">Editar</button>
         <button class="excluir" data-indice="${indice}">Excluir</button>
+      </div>
+      <div class="editar-tarefa oculto">
+        <input type="text" value="${tarefa}" />
+        <button class="salvar-tarefa" data-indice="${indice}">Salvar</button>
+        <button class="cancelar-edicao" data-indice="${indice}">Cancelar</button>
       </div>
     `;
     lista.appendChild(li);
@@ -83,21 +92,50 @@ form.addEventListener('submit', event => {
 
 // Evento de clique nos botões de editar e excluir tarefas
 lista.addEventListener('click', event => {
-  const elemento = event.target;
-  if (elemento.classList.contains('editar')) {
-    const indice = elemento.dataset.indice;
-    const tarefa = prompt('Digite a nova tarefa:', tarefas[indice]);
-    if (tarefa) {
-      editarTarefa(indice, tarefa);
+    const elemento = event.target;
+    if (elemento.classList.contains('editar')) {
+
+      // Oculta o botão "Editar" clicado
+      elemento.classList.add('oculto');
+
+      // Exibe a área de edição da tarefa correspondente
+      const indice = elemento.dataset.indice;
+      const editarTarefaDiv = lista.querySelectorAll('.editar-tarefa')[indice];
+      editarTarefaDiv.classList.remove('oculto');
+    } 
+    
+    else if (elemento.classList.contains('excluir')) {
+
+        // excluir tarefa editada
+      const indice = elemento.dataset.indice;
+      const confirmacao = confirm(`Deseja excluir a tarefa "${tarefas[indice]}"?`);
+      if (confirmacao) {
+        excluirTarefa(indice);
+      }
+    } 
+    
+    else if (elemento.classList.contains('salvar-tarefa')) {
+
+      // Salva a tarefa editada e exibe novamente o botão "Editar"
+      const indice = elemento.dataset.indice;
+      const input = lista.querySelectorAll('input')[indice];
+      editarTarefa(indice, input.value);
+      const editarButton = lista.querySelectorAll('.editar')[indice];
+      editarButton.classList.remove('oculto');
+      const editarTarefaDiv = lista.querySelectorAll('.editar-tarefa')[indice];
+      editarTarefaDiv.classList.add('oculto');
+    } 
+    
+    else if (elemento.classList.contains('cancelar-edicao')) {
+
+      // Cancela a edição e exibe novamente o botão "Editar"
+      const indice = elemento.dataset.indice;
+      const editarButton = lista.querySelectorAll('.editar')[indice];
+      editarButton.classList.remove('oculto');
+      const editarTarefaDiv = lista.querySelectorAll('.editar-tarefa')[indice];
+      editarTarefaDiv.classList.add('oculto');
     }
-  } else if (elemento.classList.contains('excluir')) {
-    const indice = elemento.dataset.indice;
-    const confirmacao = confirm(`Deseja excluir a tarefa "${tarefas[indice]}"?`);
-    if (confirmacao) {
-      excluirTarefa(indice);
-    }
-  }
-});
+  });
 
 // Inicializa a lista de tarefas com as tarefas salvas no localStorage (se houver)
 const tarefasSalvas = localStorage.getItem('tarefas');

@@ -122,6 +122,11 @@ body {
     transition: background-color 0.2s;
   }
 
+  /* Ocultar os botões "Editar" com a classe "oculto" */
+.oculto {
+  display: none;
+}
+
   /* Tema escuro tarefas */
   .dark #tarefas-container {
     background-color: var(--bg-color);
