@@ -48,13 +48,13 @@ function atualizarLista() {
     li.innerHTML = `
       <span>${tarefa}</span>
       <div>
-        <button class="editar" data-indice="${indice}">Editar</button>
-        <button class="excluir" data-indice="${indice}">Excluir</button>
+        <button class="editar" data-indice="${indice}" style="padding: 8px;">Editar</button>
+        <button class="excluir" data-indice="${indice}" style="padding: 8px;">Excluir</button>
       </div>
       <div class="editar-tarefa oculto">
         <input type="text" value="${tarefa}" />
-        <button class="salvar-tarefa" data-indice="${indice}">Salvar</button>
-        <button class="cancelar-edicao" data-indice="${indice}">Cancelar</button>
+        <button class="salvar-tarefa" data-indice="${indice}" style="padding: 8px;">Salvar</button>
+        <button class="cancelar-edicao" data-indice="${indice}" style="padding: 8px;">Cancelar</button>
       </div>
     `;
     lista.appendChild(li);
@@ -95,6 +95,8 @@ lista.addEventListener('click', event => {
     const elemento = event.target;
     if (elemento.classList.contains('editar')) {
 
+      document.getElementById('.excluir')
+
       // Oculta o botão "Editar" clicado
       elemento.classList.add('oculto');
 
@@ -106,13 +108,28 @@ lista.addEventListener('click', event => {
     
     else if (elemento.classList.contains('excluir')) {
 
-        // excluir tarefa editada
+      // excluir tarefa editada
       const indice = elemento.dataset.indice;
-      const confirmacao = confirm(`Deseja excluir a tarefa "${tarefas[indice]}"?`);
-      if (confirmacao) {
-        excluirTarefa(indice);
-      }
-    } 
+      Swal.fire({
+        title: 'Tem certeza?',
+        text: `Deseja excluir a tarefa "${tarefas[indice]}"?`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sim, excluir!',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          excluirTarefa(indice);
+          Swal.fire(
+            'Tarefa excluída!',
+            '',
+            'success'
+          );
+        } else {
+          // Ação a ser tomada se o usuário cancelar
+        }
+      })
+    }
     
     else if (elemento.classList.contains('salvar-tarefa')) {
 
@@ -136,6 +153,21 @@ lista.addEventListener('click', event => {
       editarTarefaDiv.classList.add('oculto');
     }
   });
+
+  Swal.fire({
+    title: 'Exclusão',
+    text: 'Você realmente deseja fazer isso?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Sim, tenho certeza!',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Ação a ser tomada se o usuário confirmar
+    } else if (result.isDenied) {
+      // Ação a ser tomada se o usuário negar
+    }
+  })
 
 // Inicializa a lista de tarefas com as tarefas salvas no localStorage (se houver)
 const tarefasSalvas = localStorage.getItem('tarefas');
