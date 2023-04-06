@@ -154,20 +154,5 @@ lista.addEventListener('click', event => {
     }
   });
 
-  Swal.fire({
-    title: 'Exclusão',
-    text: 'Você realmente deseja fazer isso?',
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonText: 'Sim, tenho certeza!',
-    cancelButtonText: 'Cancelar'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      // Ação a ser tomada se o usuário confirmar
-    } else if (result.isDenied) {
-      // Ação a ser tomada se o usuário negar
-    }
-  })
-
 // Inicializa a lista de tarefas com as tarefas salvas no localStorage (se houver)
 const tarefasSalvas = localStorage.getItem('tarefas');
