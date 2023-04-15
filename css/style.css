@@ -122,7 +122,7 @@ body {
   }
   
 /* Definição do estilo do botão de edição e exclusão */
-  li .excluir,.editar {
+  li .excluir, .editar, li .salvar-tarefa, li .cancelar-edicao {
     background-color: var(--cor-primaria);
     color: var(--cor-white);
     border: none;
